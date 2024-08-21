@@ -32,8 +32,8 @@ class MusicSnitch extends HTMLElement {
     text.target = '_blank'
     text.part = 'a'
 
-    const title = document.createElement('strong')
-    title.textContent = 'Listening'
+    const title = document.createElement('span')
+    title.textContent = '♪ now playing: '
     title.part = 'title'
 
     const shadow = this.attachShadow({ mode: 'open' })
