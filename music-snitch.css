@@ -1,0 +1,29 @@
+music-snitch {
+  display: block;
+  opacity: 1;
+  padding: 1em;
+  transition: opacity 150ms ease-in-out;
+  margin: auto;
+  text-align: center;
+  font: var(--font-mono);
+  border-bottom: 1px solid #797872;
+}
+
+music-snitch.is-playing {
+  /* animation: marquee 15s linear infinite; */
+}
+
+music-snitch::part(a) {
+  display: inline;
+  text-decoration: none;
+  color: #a84545;
+}
+
+music-snitch::part(title) {
+  display: inline;
+}
+
+/* @keyframes marquee {
+    0%   { transform: translate(100%, 0); }
+    100% { transform: translate(-100%, 0); }
+} */
