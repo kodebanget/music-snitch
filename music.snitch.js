@@ -19,12 +19,6 @@ class MusicSnitch extends HTMLElement {
   }
 
   render (name, artist, URL, isPlaying) {
-    if (!isPlaying) {
-      if (this.shadow) {
-        this.classList.remove('is-visible')
-      }
-      return
-    }
 
     const text = document.createElement('a')
     text.href = URL
@@ -33,14 +27,16 @@ class MusicSnitch extends HTMLElement {
     text.part = 'a'
 
     const title = document.createElement('span')
-    title.textContent = '♪ now playing: '
+    title.textContent = isPlaying ? '♪ now playing: ' : '♪ recently played: '
     title.part = 'title'
 
     const shadow = this.attachShadow({ mode: 'open' })
     shadow.appendChild(title)
     shadow.appendChild(text)
 
-    this.classList.add('is-visible')
+    if (isPlaying) {
+      this.classList.add('is-playing')
+    }
   }
 }
 
