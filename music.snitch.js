@@ -18,7 +18,7 @@ class MusicSnitch extends HTMLElement {
     })
   }
 
-  render (name, artist, URL, isPlaying) {
+  render (name, artist, URL, isPlaying = false) {
 
     const title = document.createElement('span')
     title.textContent = isPlaying ? '♪ now playing: ' : '♪ recently played: '
