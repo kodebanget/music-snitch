@@ -20,19 +20,31 @@ class MusicSnitch extends HTMLElement {
 
   render (name, artist, URL, isPlaying) {
 
-    const text = document.createElement('a')
-    text.href = URL
-    text.textContent = `${name} by ${artist['#text']}`
-    text.target = '_blank'
-    text.part = 'a'
-
     const title = document.createElement('span')
     title.textContent = isPlaying ? '♪ now playing: ' : '♪ recently played: '
     title.part = 'title'
 
+    const trackLink = document.createElement('a')
+    trackLink.href = URL
+    trackLink.textContent = name
+    trackLink.target = '_blank'
+    trackLink.part = 'a'
+
+    const by = document.createElement('span')
+    by.textContent = ' by '
+    by.part = 'title'
+
+    const artistLink = document.createElement('a')
+    artistLink.href = URL.split('_')[0]
+    artistLink.textContent = artist['#text']
+    artistLink.target = '_blank'
+    artistLink.part = 'a'
+
     const shadow = this.attachShadow({ mode: 'open' })
     shadow.appendChild(title)
-    shadow.appendChild(text)
+    shadow.appendChild(trackLink)
+    shadow.appendChild(by)
+    shadow.appendChild(artistLink)
 
     if (isPlaying) {
       this.classList.add('is-playing')
