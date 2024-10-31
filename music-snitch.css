@@ -1,12 +1,16 @@
 music-snitch {
   display: block;
-  opacity: 1;
-  padding: 1em;
+  visibility: hidden;
   transition: opacity 150ms ease-in-out;
   margin: auto;
   text-align: center;
   font: var(--font-mono);
   border-bottom: 1px solid #797872;
+}
+
+music-snitch.is-visible {
+  visibility: visible;
+  padding: 1em;
 }
 
 music-snitch.is-playing {
