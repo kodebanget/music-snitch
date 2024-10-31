@@ -46,6 +46,8 @@ class MusicSnitch extends HTMLElement {
     shadow.appendChild(by)
     shadow.appendChild(artistLink)
 
+    this.classList.add('is-visible')
+
     if (isPlaying) {
       this.classList.add('is-playing')
     }
