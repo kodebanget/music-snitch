@@ -16,4 +16,4 @@ Shows the music you are currently scrobbling.
 Have a look at the `index.html` included in this repository to learn how to customize the style.
 
 ### To-do
-- [ ] animate if currently playing
+- [x] animate if currently playing
