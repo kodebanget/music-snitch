@@ -14,6 +14,7 @@ music-snitch.is-visible {
 
 music-snitch.is-playing {
   animation: marquee 20s linear infinite;
+  white-space: nowrap;
 }
 
 music-snitch::part(a) {
