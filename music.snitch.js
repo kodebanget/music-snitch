@@ -13,12 +13,12 @@ class MusicSnitch extends HTMLElement {
 
       if (track) {
         const isPlaying = track['@attr'] && track['@attr'].nowplaying ? true : false
-        this.render(track.name, track.artist, track.url, isPlaying)
+        this.render(track.name, track.artist, track.url, track.loved, isPlaying)
       }
     })
   }
 
-  render (name, artist, URL, isPlaying = false) {
+  render (name, artist, URL, loved, isPlaying = false) {
 
     const title = document.createElement('span')
     title.textContent = isPlaying ? '♪ now playing: ' : '♪ recently played: '
@@ -40,11 +40,19 @@ class MusicSnitch extends HTMLElement {
     artistLink.target = '_blank'
     artistLink.part = 'a'
 
+    const heart = document.createElement('span')
+    heart.textContent = ' ♡'
+    heart.part = 'title'
+
     const shadow = this.attachShadow({ mode: 'open' })
     shadow.appendChild(title)
     shadow.appendChild(trackLink)
     shadow.appendChild(by)
     shadow.appendChild(artistLink)
+
+    if (loved === '1') {
+      shadow.appendChild(heart)
+    }
 
     this.classList.add('is-visible')
 
