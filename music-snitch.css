@@ -4,7 +4,6 @@ music-snitch {
   transition: opacity 150ms ease-in-out;
   margin: auto;
   text-align: center;
-  font: var(--font-mono);
 }
 
 music-snitch.is-visible {
@@ -24,7 +23,6 @@ music-snitch.is-playing {
 music-snitch::part(a) {
   display: inline;
   text-decoration: none;
-  color: #a84545;
 }
 
 music-snitch::part(title) {
