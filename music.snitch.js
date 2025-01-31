@@ -13,19 +13,19 @@ class MusicSnitch extends HTMLElement {
 
       if (track) {
         const isPlaying = track['@attr'] && track['@attr'].nowplaying ? true : false
-        this.render(track.name, track.artist, track.url, track.loved, isPlaying)
+        this.render(username, track.name, track.artist, track.url, track.loved, isPlaying)
       }
     })
   }
 
-  render (name, artist, URL, loved, isPlaying = false) {
+  render (username, name, artist, URL, loved, isPlaying = false) {
 
     const title = document.createElement('span')
     title.textContent = isPlaying ? '♪ now playing: ' : '♪ recently played: '
     title.part = 'title'
 
     const trackLink = document.createElement('a')
-    trackLink.href = URL
+    trackLink.href = URL.replace('last.fm/', `$&user/${username}/library/`)
     trackLink.textContent = name
     trackLink.target = '_blank'
     trackLink.part = 'a'
