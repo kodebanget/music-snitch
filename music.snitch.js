@@ -44,7 +44,46 @@ class MusicSnitch extends HTMLElement {
     heart.textContent = ' ♡'
     heart.part = 'title'
 
+    const sheet = new CSSStyleSheet()
+    const style = `
+      :host {
+        display: block;
+        visibility: hidden;
+        transition: opacity 150ms ease-in-out;
+        margin: auto; text-align: center;
+      }
+
+      :host(.is-visible) {
+        visibility: visible; padding: 1em;
+      }
+
+      :host(.is-playing) {
+        animation: marquee 20s linear infinite;
+        white-space: nowrap;
+
+        &:hover {
+          animation-play-state: paused;
+        }
+      }
+
+      ::part(a) {
+        text-decoration: none;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(100%);
+        }
+
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+    `
+    sheet.replaceSync(style)
+
     const shadow = this.attachShadow({ mode: 'open' })
+    shadow.adoptedStyleSheets = [sheet]
     shadow.appendChild(title)
     shadow.appendChild(trackLink)
     shadow.appendChild(by)
