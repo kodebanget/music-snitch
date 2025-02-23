@@ -60,10 +60,10 @@ class MusicSnitch extends HTMLElement {
       :host(.is-playing) {
         animation: marquee 20s linear infinite;
         white-space: nowrap;
+      }
 
-        &:hover {
-          animation-play-state: paused;
-        }
+      :host(.is-playing:hover) {
+        animation-play-state: paused;
       }
 
       ::part(a) {
