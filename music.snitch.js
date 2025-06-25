@@ -66,7 +66,7 @@ class MusicSnitch extends HTMLElement {
         animation-play-state: paused;
       }
 
-      ::part(a) {
+      :host::part(a) {
         text-decoration: none;
       }
 
