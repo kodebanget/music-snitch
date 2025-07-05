@@ -4,7 +4,7 @@ class MusicSnitch extends HTMLElement {
   }
 
   connectedCallback(e) { 
-    const URL = 'https://1443203a597611f0a07af69ea79377d9.val.run'
+    const URL = 'https://salientsingingstarfish.val.run' // my personal proxy
 
     fetch(URL).then(response => response.json()).then((data) => {
       const username = data.recenttracks['@attr'].user
