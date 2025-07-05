@@ -4,10 +4,7 @@ class MusicSnitch extends HTMLElement {
   }
 
   connectedCallback(e) {
-    const username = this.getAttribute("data-username")
-    const key = this.getAttribute("data-key")
-    const URL = `//ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${key}&limit=1&format=json&extended=1`
-
+    const URL = 'https://1443203a597611f0a07af69ea79377d9.val.run' // my personal proxy
     fetch(URL).then(response => response.json()).then((data) => {
       const track = data.recenttracks.track[0]
 
