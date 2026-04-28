@@ -7,24 +7,23 @@ class MusicSnitch extends HTMLElement {
     const URL = 'https://salientsingingstarfish.val.run' // my personal proxy
 
     fetch(URL).then(response => response.json()).then((data) => {
-      const username = data.recenttracks['@attr'].user
       const track = data.recenttracks.track[0]
 
       if (track) {
         const isPlaying = track['@attr'] && track['@attr'].nowplaying ? true : false
-        this.render(username, track.name, track.artist, track.url, track.loved, isPlaying)
+        this.render(track.name, track.artist, track.url, track.loved, isPlaying)
       }
     })
   }
 
-  render (username, name, artist, URL, loved, isPlaying = false) {
+  render (name, artist, url, loved, isPlaying = false) {
 
     const title = document.createElement('span')
     title.textContent = isPlaying ? '♪ now playing: ' : '♪ recently played: '
     title.part = 'title'
 
     const trackLink = document.createElement('a')
-    trackLink.href = URL.replace('last.fm/', `$&user/${username}/library/`)
+    trackLink.href = url
     trackLink.textContent = name
     trackLink.target = '_blank'
     trackLink.part = 'a'
